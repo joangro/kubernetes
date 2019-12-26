@@ -1,0 +1,6 @@
+Faker
+google-auth
+google-cloud-redis
+redis
+requests
+
