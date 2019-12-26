@@ -1,2 +1,4 @@
 
-kubectl create deployment memorystore-app --image <DOCKER IMAGE> --replicas 5
+kubectl create deployment memorystore-app --image <DOCKER IMAGE> 
+  
+kubectl scale deployment memorystore-app --replicas 5
