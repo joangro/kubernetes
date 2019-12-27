@@ -1,3 +1,11 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: cloudsql-instance-credentials
+data:
+  #credentials.json: SERVICE_ACCOUNT_KEY
+  credentials.json: c2FkCg==
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -19,4 +27,31 @@ spec:
           image: gcr.io/grauj-gcp/nginx-static:v0
           ports:
             - containerPort: 80
+        - name: cloudsql-proxy
+          image: gcr.io/cloudsql-docker/gce-proxy:latest
+          env:
+            - name: INSTANCE_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: cloud-sql-data
+                  key: INSTANCE_NAME
+          command: ["/cloud_sql_proxy",
+                    "-instances=$(INSTANCE_NAME)=tcp:3306",
+                    "-credential_file=/secrets/cloudsql/credentials.json"]
+          volumeMounts:
+            - name: cloudsql-instance-credentials
+              mountPath: /secrets/cloudsql
+              readOnly: true
+      volumes:
+        - name: cloudsql-instance-credentials
+          secret:
+            secretName: cloudsql-instance-credentials
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: default
+  name: cloud-sql-data
+data:
+  INSTANCE_NAME: grauj-gcp:us-central1:mysql-all
 

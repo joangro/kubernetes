@@ -16,5 +16,12 @@ spec:
     spec:
       containers:
       - image: gcr.io/spanner-latency-test-262609/scan-redis:latest
+        env:
+        - name: INSTANCE_ID
+          valueFrom:
+            configMapKeyRef:
+              key: INSTANCE_ID
+              name: memorystore
+
         imagePullPolicy: Always
         name: scan-redis
