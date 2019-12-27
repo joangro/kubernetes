@@ -1,0 +1,8 @@
+FROM ubuntu
+
+COPY wrk /bin
+
+ENTRYPOINT ["/bin/bash", "-c", "wrk", "-c100", "-t4", "-d20", "--timeout", "10s"]
+
+CMD ["--help"]
+
