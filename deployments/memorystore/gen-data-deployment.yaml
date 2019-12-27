@@ -1,0 +1,26 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: memorystore-app
+  name: memorystore-app
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: memorystore-app
+  template:
+    metadata:
+      labels:
+        app: memorystore-app
+    spec:
+      containers:
+      - env:
+        - name: INSTANCE_ID
+          valueFrom:
+            configMapKeyRef:
+              key: INSTANCE_ID
+              name: memorystore
+        image: gcr.io/spanner-latency-test-262609/redis-gen:latest
+        imagePullPolicy: Always
+        name: redis-gen

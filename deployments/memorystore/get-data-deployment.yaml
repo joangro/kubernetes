@@ -1,0 +1,20 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: memorystore-scan
+  name: memorystore-scan
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: memorystore-scan
+  template:
+    metadata:
+      labels:
+        app: memorystore-scan
+    spec:
+      containers:
+      - image: gcr.io/spanner-latency-test-262609/scan-redis:latest
+        imagePullPolicy: Always
+        name: scan-redis

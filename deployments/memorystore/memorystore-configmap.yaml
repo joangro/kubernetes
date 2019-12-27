@@ -1,0 +1,7 @@
+apiVersion: v1
+data:
+  INSTANCE_ID: us-cache
+kind: ConfigMap
+metadata:
+  name: memorystore
+  namespace: default
