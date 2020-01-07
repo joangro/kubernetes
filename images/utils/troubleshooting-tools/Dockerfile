@@ -7,7 +7,7 @@ RUN mv /lib/libgcc_s.so.1 /lib/libgcc_s.so.1.old && opkg-install \
 	bind-dig \
 	vim \
 	jq \
-	python python-dev python-pip python \
+	python python-dev python-pip \
 	nmap \
 	netcat \
 	mtr
