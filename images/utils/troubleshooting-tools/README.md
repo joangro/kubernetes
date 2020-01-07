@@ -1,3 +1,5 @@
+Base image: [progrium/busybox](https://hub.docker.com/r/progrium/busybox/dockerfile)
+
 It includes the images from the base "busybox" image [1]:
 
         [, [[, acpid, addgroup, adduser, adjtimex, ar, arp, arping, ash,
@@ -40,6 +42,6 @@ It includes the images from the base "busybox" image [1]:
 
 Plus some other packages installed with the opkg tool, including Python.
 
-Size ~60 MB.
+Size ~60 MB. Compressed ~25 MB.
 
 [1] https://busybox.net/downloads/BusyBox.html
