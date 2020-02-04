@@ -1,8 +1,14 @@
-To do multiple deployments, run the `multideploy.sh` script. 
+To do multiple deployments, execute the `multideploy.sh` script. 
 
-Example:
+Usage:
 
 `./multideploy.sh  BASE_IMAGE_NAME  NUMBER_OF_DEPLOYMENTS`
+
+or
+
+`./multideploy.sh  my_base_image_name  3`
+
+The script will create the containers with the format `gcr.io/"$PROJECT_ID"/"$BASE_IMAGE_NAME"_N` using the gcloud command configuration on the environment.
 
 The script will create N deployments with the following values, for **N=1, 2, ...NUMBER_OF_DEPLOYMENTS**:
 
