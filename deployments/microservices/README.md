@@ -4,7 +4,7 @@ Example:
 
 `./multideploy.sh  BASE_IMAGE_NAME  NUMBER_OF_DEPLOYMENTS`
 
-The script will create N deployments with the following values, for N=1, 2, ...NUMBER_OF_DEPLOYMENTS:
+The script will create N deployments with the following values, for **N=1, 2, ...NUMBER_OF_DEPLOYMENTS**:
 
 ```
 metadata.name:    microservice-N-deployment
