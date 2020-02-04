@@ -10,4 +10,4 @@ or
 `./build-base-image.sh hello_world 3`
 
 
-It will upload the images to [gcr.io](https://cloud.google.com/container-registry/), it will use the default gcloud config project to upload the images there.
+It will upload the images to [gcr.io](https://cloud.google.com/container-registry/), it will find the project ID from the gcloud command configuration, and upload the images there.
