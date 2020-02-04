@@ -2,21 +2,19 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"net/http"
 	"os"
-	"log"
 )
 
 func reqHandler(w http.ResponseWriter, req *http.Request) {
-		fmt.Fprintf(w, "Hello world!")
+	svid := os.Getenv("SERVICE_ID")
+	fmt.Fprintf(w, svid)
 }
 
-func main(){
+func main() {
 
-	svid := os.Getenv("SERVICE_ID")
-
-	fmt.Println("Running server... \n" + svid)
-
+	fmt.Println("Running server... \n")
 
 	http.HandleFunc("/", reqHandler)
 
