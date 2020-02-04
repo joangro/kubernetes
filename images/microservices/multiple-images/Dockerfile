@@ -1,6 +1,8 @@
 FROM golang:1.12-buster
 
-ENV SERVICE_ID="Hello world!"
+ARG SERVICE_ID
+
+ENV SERVICE_ID=$SERVICE_ID
 
 RUN mkdir /app
 
