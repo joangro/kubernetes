@@ -19,3 +19,17 @@ spec:
         image: gcr.io/PROJECT_ID/BASE_IMAGE_n#n
         ports:
         - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: microservice-#n
+spec:
+  selector:
+    app: microservice-#n
+  ports:
+    - protocol: TCP
+      port: PORT_NUMBER
+      targetPort: 8080
+  type: LoadBalancer
+

@@ -17,5 +17,9 @@ PROJECT_ID=$(gcloud config get-value core/project)
 for i in $(eval echo "{1..$NUMBER_OF_DEPLOYMENTS}")
 do
 	# Subtitute variables and direct the output to the kubectl command
-	kubectl apply -f <(sed "s/#n/$i/g" deployment_base.yaml | sed "s/PROJECT_ID/$PROJECT_ID/g" | sed "s/BASE_IMAGE/$BASE_NAME/g")
+	PORT_TO_EXPOSE=$(( $i + 8000 ))
+	kubectl apply -f <(  sed "s/#n/$i/g" deployment_base.yaml \
+	   		   | sed "s/PROJECT_ID/$PROJECT_ID/g" \
+			   | sed "s/BASE_IMAGE/$BASE_NAME/g" \
+			   | sed "s/PORT_NUMBER/$PORT_TO_EXPOSE/g")
 done

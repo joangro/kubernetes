@@ -1,0 +1,19 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: microservices-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /service1
+        backend:
+          serviceName: microservice-1 
+          servicePort: 8001
+      - path: /service2
+        backend:
+          serviceName: microservice-2
+          servicePort: 8002
+
