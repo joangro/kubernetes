@@ -2,13 +2,13 @@
 
 BASE_NAME=$1
 if [ -z $BASE_NAME ];then
-	echo "Base name wasn't provided. Pass it as first argument when executing the script."
+	echo "Base name wasn't provided. Pass it as the first argument when executing the script."
 	exit -1
 fi
 
 NUMBER_OF_IMAGES=$2
 if [ -z $NUMBER_OF_IMAGES ];then
-	echo "Number of images weren't provided. Pass it as first argument when executing the script."
+	echo "Number of images weren't provided. Pass it as the second argument when executing the script."
 	exit -1
 fi
 
