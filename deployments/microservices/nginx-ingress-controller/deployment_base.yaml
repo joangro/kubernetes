@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: microservice-#n-deployment
+  labels:
+    app: microservice-#n
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: microservice-#n
+  template:
+    metadata:
+      labels:
+        app: microservice-#n
+    spec:
+      containers:
+      - name: microservice
+        image: gcr.io/PROJECT_ID/BASE_IMAGE_n#n
+        ports:
+        - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: microservice-#n
+spec:
+  selector:
+    app: microservice-#n
+  ports:
+    - protocol: TCP
+      port: PORT_NUMBER
+      targetPort: 8080
+      #  type: LoadBalancer
+  type: ClusterIP
+
