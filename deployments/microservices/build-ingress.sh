@@ -12,7 +12,7 @@ for i in $(eval echo "{1..$NUMBER_OF_DEPLOYMENTS}")
 do
         PORT_TO_EXPOSE=$(( $i + 8000 ))
 	cat <<EOF >> ingress-dynamic.yaml
-         - path: /service1
+         - path: /service$i
            backend:
              serviceName: microservice-$i
              servicePort: $PORT_TO_EXPOSE

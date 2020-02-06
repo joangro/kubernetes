@@ -25,5 +25,5 @@ kubectl get pods --namespace=nginx-ingress
 # Create GCP Load Balancer
 kubectl apply -f service/loadbalancer.yaml
 
-rm -r ../../kubernetes-ingress
+rm -rf ../../kubernetes-ingress
 
