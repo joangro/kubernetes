@@ -12,4 +12,4 @@ RUN mv /lib/libgcc_s.so.1 /lib/libgcc_s.so.1.old && opkg-install \
 	netcat \
 	mtr
 
-ENTRYPOINT ["/bin/bash"]
+CMD ["/bin/bash"]
